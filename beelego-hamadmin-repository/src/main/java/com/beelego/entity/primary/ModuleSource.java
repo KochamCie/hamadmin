@@ -1,6 +1,7 @@
 package com.beelego.entity.primary;
 
 import com.beelego.enums.ModuleTypeEnum;
+import com.beelego.global.base.BaseObject;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -13,7 +14,7 @@ import java.util.Date;
  */
 @Data
 @Entity
-public class ModuleSource {
+public class ModuleSource extends BaseObject {
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "UUID")

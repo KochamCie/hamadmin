@@ -1,6 +1,8 @@
 package com.beelego.repository.primary;
 
 import com.beelego.entity.primary.ModuleSource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,4 +13,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ModuleSourceRepository extends JpaRepository<ModuleSource, String> {
 
+    @Override
+    Page<ModuleSource> findAll(Pageable pageable);
 }

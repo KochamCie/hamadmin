@@ -34,6 +34,7 @@
         <log4j.version>1.2.16</log4j.version>
         <lombok.version>1.16.16</lombok.version>
         <fastjson.version>1.1.39</fastjson.version>
+        <lang3.version>3.4</lang3.version>
     </properties>
 
     <dependencies>
@@ -65,6 +66,11 @@
             <version>${fastjson.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${lang3.version}</version>
+        </dependency>
     </dependencies>
 
 

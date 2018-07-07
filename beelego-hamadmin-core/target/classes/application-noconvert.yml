@@ -1,0 +1,7 @@
+convert:
+  ignore:
+    - springfox.documentation.swagger.web.UiConfiguration
+    - java.util.List<springfox.documentation.swagger.web.SwaggerResource>
+    - springfox.documentation.spring.web.json.Json
+    - springfox.documentation.swagger.web.SecurityConfiguration
+

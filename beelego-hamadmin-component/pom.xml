@@ -44,6 +44,14 @@
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.beelego</groupId>
+            <artifactId>spring-boot-starter-swagger</artifactId>
+            <version>2.0.1-RELEASE</version>
+        </dependency>
+
     </dependencies>
 
 </project>
