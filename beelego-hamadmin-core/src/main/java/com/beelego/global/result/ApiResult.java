@@ -76,4 +76,25 @@ public class ApiResult<T> extends BaseObject {
             return errorCodeEnum.getMsg();
         }
     }
+
+
+    private ApiResult(T data) {
+        this.data = data;
+    }
+
+    public static ApiResult ok(Object data) {
+        return new ApiResult<>(data);
+    }
+    public static ApiResult ok() {
+        return new ApiResult<>(null);
+    }
+
+
+
+    public ApiResult addDebug(String[] debug) {
+        this.debug = debug;
+        return this;
+    }
+
+
 }

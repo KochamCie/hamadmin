@@ -33,10 +33,8 @@ public class CustomStringHttpMessageConverter extends StringHttpMessageConverter
     @Override
     protected void writeInternal(String s, HttpOutputMessage httpOutputMessage) throws IOException, HttpMessageNotWritableException {
         Charset charset = httpOutputMessage.getHeaders().getContentType().getCharset();
-        ApiResult result = new ApiResult();
-        result.setData(s);
-        httpOutputMessage.getHeaders().setContentLength(result.toJson().getBytes().length);
-        StreamUtils.copy(result.toJson(), charset, httpOutputMessage.getBody());
+        httpOutputMessage.getHeaders().setContentLength(ApiResult.ok(s).toJson().getBytes().length);
+        StreamUtils.copy(ApiResult.ok(s).toJson(), charset, httpOutputMessage.getBody());
     }
 
 }

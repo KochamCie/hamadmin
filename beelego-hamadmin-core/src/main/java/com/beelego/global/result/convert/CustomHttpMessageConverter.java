@@ -67,9 +67,9 @@ public class CustomHttpMessageConverter extends MappingJackson2HttpMessageConver
             super.writeInternal(object, type, outputMessage);
             return;
         }
-        ApiResult<Object> result = new ApiResult<>();
-        result.setData(object);
-        super.writeInternal(result, ApiResult.class, outputMessage);
+//        ApiResult<Object> result = ApiResult.ok();
+//        result.setData(object);
+        super.writeInternal(ApiResult.ok(object), ApiResult.class, outputMessage);
     }
 
 }

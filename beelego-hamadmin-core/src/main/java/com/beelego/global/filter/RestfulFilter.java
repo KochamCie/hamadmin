@@ -29,10 +29,10 @@ public class RestfulFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         RequestMethod method = RequestMethod.valueOf(request.getMethod().toUpperCase());
         //log.info("method is [{}]", method);
-        if(200 == response.getStatus()
-                && RequestMethod.POST.equals(method)){
-            response.setStatus(201);
-        }
+//        if(200 == response.getStatus()
+//                && RequestMethod.POST.equals(method)){
+//            response.setStatus(201);
+//        }
         chain.doFilter(request, response);
         //log.info("restful filter doFilter out");
     }

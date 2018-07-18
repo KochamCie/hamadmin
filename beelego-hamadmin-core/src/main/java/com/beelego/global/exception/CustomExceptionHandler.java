@@ -17,11 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class CustomExceptionHandler {
 
     private ApiResult defaultMsg(Exception e) {
-        ApiResult result = new ApiResult();
-        result.addError(ErrorCodeEnum.RUNTIME_EXCEPTION);
-        result.setData(e.getMessage());
-        result.setDebug(ExceptionUtils.getStackFrames(e));
-        return result;
+        return ApiResult.ok(e.getMessage()).addError(ErrorCodeEnum.RUNTIME_EXCEPTION).addDebug(ExceptionUtils.getStackFrames(e));
     }
 
     @ExceptionHandler(value = Exception.class)
@@ -30,7 +26,7 @@ public class CustomExceptionHandler {
         if (e instanceof ApiException) {
             ApiException apiException = (ApiException) e;
             log.error("{}, {}", apiException.getCode(), apiException.getMsg());
-            return new ApiResult().addError(apiException.getCode(), apiException.getMsg());
+            return ApiResult.ok().addError(apiException.getCode(), apiException.getMsg());
         }
         return defaultMsg(e);
     }

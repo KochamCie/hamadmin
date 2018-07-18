@@ -41,4 +41,7 @@ public class ModuleSource extends BaseObject {
     @Column(name = "create_time")
     private Date createTime = new Date();
 
+    @Column(name = "publish", nullable = false, columnDefinition = "tinyint(1) default 0")
+    private boolean publish;
+
 }

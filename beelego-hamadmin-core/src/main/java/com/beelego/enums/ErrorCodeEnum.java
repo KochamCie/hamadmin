@@ -15,7 +15,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 public enum ErrorCodeEnum implements BaseEnum {
 
     //    SUCCESS("0", "操作成功！"),
-    RUNTIME_EXCEPTION("1", "系统运行异常"),
+    RUNTIME_EXCEPTION("1", "系统运行异常！"),
+    PARAMETERS_FIELD_ERROR("2","请求参数约束校验不通过！"),
     ARGS_BEYOND_CONSTRUCTOR("600001", "参数数量超出构造函数参数数量！"),
     WANTED_NOT_FOUND("404001", "资源不存在！"),
     FAILED("666001", "操作失败！");
