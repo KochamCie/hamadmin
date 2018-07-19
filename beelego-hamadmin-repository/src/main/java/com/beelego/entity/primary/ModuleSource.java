@@ -44,4 +44,11 @@ public class ModuleSource extends BaseObject {
     @Column(name = "publish", nullable = false, columnDefinition = "tinyint(1) default 0")
     private boolean publish;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "publish_time")
+    private Date publishTime = new Date();
+
+    @Column(name = "url", nullable = false, columnDefinition = "varchar(255) default 'https://www.baidu.com'")
+    private String url = "http://172.16.3.211:8888/lanmao/swagger-ui.html";
+
 }

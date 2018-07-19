@@ -1,7 +1,10 @@
-package com.beelego.payload;
+package com.beelego.rest.login;
 
+import com.beelego.entity.primary.ModuleSource;
 import com.beelego.global.base.BaseObject;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * @author : hama
@@ -19,5 +22,7 @@ public class Test extends BaseObject {
     private String avatar;
 
     private String name;
+
+    private List<ModuleSource> sources;
 
 }

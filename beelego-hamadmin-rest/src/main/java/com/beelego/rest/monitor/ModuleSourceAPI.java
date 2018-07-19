@@ -5,8 +5,6 @@ import com.beelego.global.base.BaseAPI;
 import com.beelego.global.result.ApiResult;
 import com.beelego.host.ModuleSourceService;
 import com.beelego.payload.CreateSource;
-import com.beelego.payload.Login;
-import com.beelego.payload.Test;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,31 +64,17 @@ public class ModuleSourceAPI extends BaseAPI {
     }
 
 
-    @ApiOperation(value = "login")
-    @RequestMapping(value = "/login/login", method = RequestMethod.POST)
-    public Object login(@RequestBody Login login) {
-        log.info("111 is {},{}", login);
-        Test test = new Test();
-        test.setToken(System.currentTimeMillis() + "");
-        test.setAvatar("https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
-        test.setIntroduction("我是超级管理员");
-        test.setName("Super Admin");
-        String[] roles = {"admin"};
-        test.setRoles(roles);
-        return ApiResult.ok(test);
+
+    @ApiOperation(value = "列表moduleRouter")
+    @RequestMapping(value = "/moduleRouter", method = RequestMethod.GET)
+    public Object moduleRouter() {
+        return moduleSourceService.findRouter();
     }
 
-    @ApiOperation(value = "info")
-    @RequestMapping(value = "/user/info", method = RequestMethod.GET)
-    public Object info() {
-        Test test = new Test();
-        test.setToken(System.currentTimeMillis() + "");
-        test.setAvatar("https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
-        test.setIntroduction("我是超级管理员");
-        test.setName("Super Admin");
-        String[] roles = {"admin"};
-        test.setRoles(roles);
-        return ApiResult.ok(test);
+    @ApiOperation(value = "publishModuleSource")
+    @RequestMapping(value = "/moduleSource/{id}/publish", method = RequestMethod.PUT)
+    public Object publishModuleSource(@PathVariable("id") String id){
+        return moduleSourceService.publishModuleSource(id);
     }
 
 }

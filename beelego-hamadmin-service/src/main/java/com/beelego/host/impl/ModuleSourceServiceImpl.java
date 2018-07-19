@@ -7,9 +7,12 @@ import com.beelego.repository.primary.ModuleSourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * @author : hama
@@ -46,4 +49,22 @@ public class ModuleSourceServiceImpl implements ModuleSourceService {
         return moduleSourceRepository.saveAndFlush(moduleSource);
     }
 
+    @Override
+    public List<ModuleSource> findRouter() {
+        return moduleSourceRepository.findAllByPublish(true,
+                Sort.by(new Sort.Order(Sort.Direction.ASC, "module"), new Sort.Order(Sort.Direction.ASC, "publishTime")));
+    }
+
+    @Override
+    public boolean publishModuleSource(String id) {
+        Optional<ModuleSource> oModuleSource = moduleSourceRepository.findById(id);
+        if (oModuleSource.isPresent()) {
+            ModuleSource source = oModuleSource.get();
+            source.setPublish(!source.isPublish());
+            source.setPublishTime(new Date());
+            moduleSourceRepository.saveAndFlush(source);
+            return true;
+        }
+        return false;
+    }
 }
