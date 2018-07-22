@@ -6,6 +6,7 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import java.util.Date;
 
 /**
@@ -50,5 +51,9 @@ public class ModuleSource extends BaseObject {
 
     @Column(name = "url", nullable = false, columnDefinition = "varchar(255) default 'https://www.baidu.com'")
     private String url = "http://172.16.3.211:8888/lanmao/swagger-ui.html";
+
+    public String getAlias() {
+        return this.ip + "_" + this.port;
+    }
 
 }

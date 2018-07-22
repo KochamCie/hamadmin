@@ -21,4 +21,6 @@ public interface ModuleSourceRepository extends JpaRepository<ModuleSource, Stri
     Page<ModuleSource> findAll(Pageable pageable);
 
     List<ModuleSource> findAllByPublish(@Param("publish") boolean publish, Sort sort);
+
+    ModuleSource findByIpAndPort(@Param("ip") String ip, @Param("port") int port);
 }

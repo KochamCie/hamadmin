@@ -1,6 +1,7 @@
 package com.beelego.rest.monitor;
 
 import com.beelego.entity.primary.ModuleSource;
+import com.beelego.enums.DynamicEnum;
 import com.beelego.global.base.BaseAPI;
 import com.beelego.global.result.ApiResult;
 import com.beelego.host.ModuleSourceService;
@@ -40,9 +41,10 @@ public class ModuleSourceAPI extends BaseAPI {
 
 
     @ApiOperation(value = "修改moduleSource")
-    @RequestMapping(value = "/moduleSource", method = RequestMethod.PUT)
-    public Object updateModuleSource(@RequestBody @ApiParam(name = "moduleSource", value = "json格式", required = true) ModuleSource moduleSource) {
-        return moduleSourceService.update(moduleSource);
+    @RequestMapping(value = "/moduleSource/{id}", method = RequestMethod.PUT)
+    public Object updateModuleSource(@RequestBody @ApiParam(name = "source", value = "json格式", required = true) CreateSource source,
+                                     @PathVariable("id") String id) {
+        return moduleSourceService.update(id, source);
     }
 
 
@@ -50,19 +52,18 @@ public class ModuleSourceAPI extends BaseAPI {
     @RequestMapping(value = "/moduleSource", method = RequestMethod.GET)
     public Object deleteModuleSource(@RequestParam("pageNo") int pageNo, @RequestParam("pageSize") int pageSize) {
         log.info("pageNo is :{}, pageSize is :{}", pageNo, pageSize);
-        return moduleSourceService.findAll(PageRequest.of(pageNo-1, pageSize));
+        return moduleSourceService.findAll(PageRequest.of(pageNo - 1, pageSize));
     }
 
     @ApiOperation(value = "删除moduleSource")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "pageNo", value = "页码",  required = true),
-            @ApiImplicitParam(name = "pageSize", value = "当前页的数量",  required = true)
+            @ApiImplicitParam(name = "pageNo", value = "页码", required = true),
+            @ApiImplicitParam(name = "pageSize", value = "当前页的数量", required = true)
     })
     @RequestMapping(value = "/moduleSource/{id}", method = RequestMethod.DELETE)
     public Object deleteModuleSource(@PathVariable("id") String id) {
         return moduleSourceService.delete(id);
     }
-
 
 
     @ApiOperation(value = "列表moduleRouter")
@@ -73,7 +74,7 @@ public class ModuleSourceAPI extends BaseAPI {
 
     @ApiOperation(value = "publishModuleSource")
     @RequestMapping(value = "/moduleSource/{id}/publish", method = RequestMethod.PUT)
-    public Object publishModuleSource(@PathVariable("id") String id){
+    public Object publishModuleSource(@PathVariable("id") String id) {
         return moduleSourceService.publishModuleSource(id);
     }
 

@@ -4,7 +4,7 @@ import com.beelego.global.base.BaseEnum;
 
 /**
  * 方便配置路由
- *
+ * 路由模块
  * @author : hama
  * @since : created in  2018/6/25
  */
@@ -12,7 +12,14 @@ public enum ModuleTypeEnum implements BaseEnum {
 
     SBADMIN,
     DRUID,
-    EUREKA;
+    EUREKA,
+    SWAGGER,
+    DISCONF,
+    APOLLO,
+    SPLUNK,
+    SQLPAD,
+    ELK,
+    SLEUTH;
 
     @Override
     public String getKey() {

@@ -19,7 +19,8 @@ public enum ErrorCodeEnum implements BaseEnum {
     PARAMETERS_FIELD_ERROR("2","请求参数约束校验不通过！"),
     ARGS_BEYOND_CONSTRUCTOR("600001", "参数数量超出构造函数参数数量！"),
     WANTED_NOT_FOUND("404001", "资源不存在！"),
-    FAILED("666001", "操作失败！");
+    FAILED("666001", "操作失败！"),
+    RESOURCE_ALREADY_EXIST("666002", "资源已存在！");
 
     private String code;
 

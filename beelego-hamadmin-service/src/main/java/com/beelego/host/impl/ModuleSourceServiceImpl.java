@@ -1,6 +1,8 @@
 package com.beelego.host.impl;
 
 import com.beelego.entity.primary.ModuleSource;
+import com.beelego.enums.ErrorCodeEnum;
+import com.beelego.global.result.ApiResult;
 import com.beelego.host.ModuleSourceService;
 import com.beelego.payload.CreateSource;
 import com.beelego.repository.primary.ModuleSourceRepository;
@@ -24,14 +26,19 @@ public class ModuleSourceServiceImpl implements ModuleSourceService {
     ModuleSourceRepository moduleSourceRepository;
 
     @Override
-    public ModuleSource save(CreateSource source) {
+    public ApiResult save(CreateSource source) {
+
+        if(null != moduleSourceRepository.findByIpAndPort(source.getIp(), source.getPort())){
+            return ApiResult.ok().addError(ErrorCodeEnum.RESOURCE_ALREADY_EXIST);
+        }
         ModuleSource moduleSource = new ModuleSource();
         moduleSource.setCreateTime(new Date());
         moduleSource.setDescription(source.getDescription());
         moduleSource.setModule(source.getModule());
         moduleSource.setIp(source.getIp());
         moduleSource.setPort(source.getPort());
-        return moduleSourceRepository.saveAndFlush(moduleSource);
+        moduleSource.setUrl(source.getUrl());
+        return ApiResult.ok(moduleSourceRepository.saveAndFlush(moduleSource));
     }
 
     @Override
@@ -45,8 +52,19 @@ public class ModuleSourceServiceImpl implements ModuleSourceService {
     }
 
     @Override
-    public ModuleSource update(ModuleSource moduleSource) {
-        return moduleSourceRepository.saveAndFlush(moduleSource);
+    public ModuleSource update(String id, CreateSource source) {
+        Optional<ModuleSource> oModuleSource = moduleSourceRepository.findById(id);
+        if (oModuleSource.isPresent()) {
+            ModuleSource moduleSource = oModuleSource.get();
+            moduleSource.setCreateTime(new Date());
+            moduleSource.setDescription(source.getDescription());
+            moduleSource.setModule(source.getModule());
+            moduleSource.setIp(source.getIp());
+            moduleSource.setPort(source.getPort());
+            moduleSource.setUrl(source.getUrl());
+            return moduleSourceRepository.saveAndFlush(moduleSource);
+        }
+        return null;
     }
 
     @Override
