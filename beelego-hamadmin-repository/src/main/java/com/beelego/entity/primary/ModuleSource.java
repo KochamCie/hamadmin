@@ -15,6 +15,7 @@ import java.util.Date;
  */
 @Data
 @Entity
+@Table(name = "ha_module_source")
 public class ModuleSource extends BaseObject {
     @Id
     @Column(name = "id")
