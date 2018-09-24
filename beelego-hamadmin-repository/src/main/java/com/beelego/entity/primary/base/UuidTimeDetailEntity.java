@@ -30,28 +30,28 @@ public abstract class UuidTimeDetailEntity extends BaseEntity {
             name = "UUID",
             strategy = "com.beelego.ds.CustomUUIDGenerator"
     )
-    private String id;
+    protected String id;
 
 
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_date", columnDefinition = "datetime comment '创建时间'")
-    private Date createdDate;
+    @Column(name = "created_date", columnDefinition = "datetime comment '创建时间'", updatable = false)
+    protected Date createdDate = new Date();
 
     @CreatedBy
-    @Column(name = "created_by", columnDefinition = "varchar(36) comment '创建人'")
+    @Column(name = "created_by", columnDefinition = "varchar(36) comment '创建人'", updatable = false)
     @JsonIgnore
-    private String createdBy;
+    protected String createdBy = "6666666";
 
 
     @JsonIgnore
     @LastModifiedDate
     @Column(name = "last_modified_date", columnDefinition = "bigint(20) comment '更新时间'")
-    private Long lastModifiedDate;
+    protected Long lastModifiedDate;
 
 
     @LastModifiedBy
     @Column(name = "last_modified_by", columnDefinition = "varchar(36) comment '修改人'")
     @JsonIgnore
-    private String lastModifiedBy;
+    protected String lastModifiedBy;
 }

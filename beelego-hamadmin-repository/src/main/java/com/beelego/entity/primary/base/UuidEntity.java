@@ -24,6 +24,6 @@ public class UuidEntity extends BaseEntity {
             name = "UUID",
             strategy = "com.beelego.ds.CustomUUIDGenerator"
     )
-    private String id;
+    protected String id;
 
 }

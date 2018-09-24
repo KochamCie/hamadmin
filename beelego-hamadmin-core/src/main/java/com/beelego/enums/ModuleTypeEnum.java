@@ -19,6 +19,7 @@ public enum ModuleTypeEnum implements BaseEnum {
     SPLUNK,
     SQLPAD,
     ELK,
+    QUARTZ,
     SLEUTH;
 
     @Override

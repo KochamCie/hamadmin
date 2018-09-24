@@ -1,6 +1,6 @@
 package com.beelego.rest.user;
 
-import com.beelego.entity.primary.account.User;
+import com.beelego.entity.primary.account.Users;
 import com.beelego.global.base.BaseAPI;
 import com.beelego.user.UserService;
 import io.swagger.annotations.Api;
@@ -27,7 +27,7 @@ public class UserAPI extends BaseAPI {
     @ApiOperation("添加用户信息")
     @RequestMapping(method = RequestMethod.POST)
     public Object saveUser() {
-        User user = new User();
+        Users user = new Users();
         user.setName("熊大" + System.currentTimeMillis());
         return userService.saveUser(user);
     }
@@ -35,8 +35,8 @@ public class UserAPI extends BaseAPI {
     @ApiOperation("用户信息列表")
     @RequestMapping(method = RequestMethod.GET)
     public Object listUser() {
-        List<User> users = userService.listUser();
-        for (User user : users) {
+        List<Users> users = userService.listUser();
+        for (Users user : users) {
             System.out.println(user.toJson());
         }
         return users;
@@ -46,9 +46,21 @@ public class UserAPI extends BaseAPI {
     @ApiOperation("用户信息列表")
     @RequestMapping(method = RequestMethod.PUT)
     public Object updateUser() {
-        User user = userService.findById("E66EF547-4DEA-4A58-B3E0-8A7625EB5F7A");
+        Users user = userService.findById("E66EF547-4DEA-4A58-B3E0-8A7625EB5F7A");
         user.setName("熊二" + System.currentTimeMillis());
         return userService.saveUser(user);
     }
+
+
+    @ApiOperation("listUserTest")
+    @RequestMapping(method = RequestMethod.GET, value = "/listUserTest")
+    public Object listUserTest() {
+        List<Users> users = userService.listUser();
+        for (Users user : users) {
+            System.out.println(user.toJson());
+        }
+        return users;
+    }
+
 
 }

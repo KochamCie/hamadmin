@@ -1,7 +1,7 @@
 package com.beelego.user;
 
 
-import com.beelego.entity.primary.account.User;
+import com.beelego.entity.primary.account.Users;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ import java.util.List;
  */
 public interface UserService {
 
-    public User saveUser(User user);
+    public Users saveUser(Users user);
 
-    List<User> listUser();
+    List<Users> listUser();
 
-    User findById(String id);
+    Users findById(String id);
 }

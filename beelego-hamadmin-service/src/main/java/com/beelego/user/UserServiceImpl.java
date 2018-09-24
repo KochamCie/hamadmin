@@ -1,10 +1,11 @@
 package com.beelego.user;
 
-import com.beelego.entity.primary.account.User;
+import com.beelego.entity.primary.account.Users;
 import com.beelego.repository.primary.account.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,18 +19,23 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     @Override
-    public User saveUser(User user) {
+    public Users saveUser(Users user) {
         return userRepository.save(user);
     }
 
     @Override
-    public List<User> listUser() {
-        List<User> users = userRepository.findAll();
+    public List<Users> listUser() {
+        List<Users> users = userRepository.findAll();
+        List<String> us=new ArrayList<String>(){{
+           add("熊大1532513618310") ;
+           add("熊二1532513755995") ;
+        }};
+        users.addAll(0, userRepository.findUserByStatusAndNameNamedParamsNative(us));
         return users;
     }
 
     @Override
-    public User findById(String id) {
+    public Users findById(String id) {
         return userRepository.findById(id).get();
     }
 }

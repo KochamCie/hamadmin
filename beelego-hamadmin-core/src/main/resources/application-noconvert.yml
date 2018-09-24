@@ -4,4 +4,5 @@ convert:
     - java.util.List<springfox.documentation.swagger.web.SwaggerResource>
     - springfox.documentation.spring.web.json.Json
     - springfox.documentation.swagger.web.SecurityConfiguration
+    - com.beelego.support.Page<com.beelego.support.JobAndTrigger>
 

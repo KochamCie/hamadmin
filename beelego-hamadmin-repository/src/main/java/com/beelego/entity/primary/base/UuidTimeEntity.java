@@ -28,19 +28,19 @@ public abstract class UuidTimeEntity extends BaseEntity {
             name = "UUID",
             strategy = "com.beelego.ds.CustomUUIDGenerator"
     )
-    private String id;
+    protected String id;
 
 
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date", columnDefinition = "datetime comment '创建时间'")
-    private Date createdDate;
+    protected Date createdDate;
 
 
     @JsonIgnore
     @LastModifiedDate
     @Column(name = "last_modified_date", columnDefinition = "bigint(20) comment '更新时间'")
-    private Long lastModifiedDate;
+    protected Long lastModifiedDate;
 
 
 }

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  *
@@ -17,7 +18,8 @@ import javax.persistence.Entity;
 @Data
 @Entity
 @NoArgsConstructor
-public class User extends UuidTimeDetailEntity {
+@Table(name = "user")
+public class Users extends UuidTimeDetailEntity {
 
     @Column(name = "name", columnDefinition = "varchar(20) comment '姓名'", nullable = false)
     private String name;

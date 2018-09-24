@@ -19,16 +19,15 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 public class TimeEntity extends BaseEntity {
 
-
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "create_time", columnDefinition = "comment '创建时间'")
-    private Date createTime;
+    @Column(name = "created_date", columnDefinition = "datetime comment '创建时间'")
+    protected Date createdDate;
 
 
     @JsonIgnore
     @LastModifiedDate
-    @Column(name = "update_time", columnDefinition = "comment '更新时间'")
-    private Long updateTime;
+    @Column(name = "last_modified_date", columnDefinition = "bigint(20) comment '更新时间'")
+    protected Long lastModifiedDate;
 
 }
