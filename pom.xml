@@ -13,6 +13,7 @@
         <module>beelego-hamadmin-service</module>
         <module>beelego-hamadmin-rest</module>
         <module>beelego-hamadmin-sbadmin</module>
+        <module>beelego-hamadmin-job</module>
     </modules>
     <packaging>pom</packaging>
 
