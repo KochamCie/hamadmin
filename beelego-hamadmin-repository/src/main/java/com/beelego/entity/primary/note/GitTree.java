@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * @author : hama
@@ -48,5 +49,9 @@ public class GitTree extends UuidEntity {
 
     @Column(name = "encoding")
     private String encoding;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "code_init_time")
+    private Date codeInitTime;
 
 }

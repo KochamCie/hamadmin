@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class CustomExceptionHandler {
 
     private ApiResult defaultMsg(Exception e) {
+        e.printStackTrace();
         return ApiResult.ok(e.getMessage()).addError(ErrorCodeEnum.RUNTIME_EXCEPTION).addDebug(ExceptionUtils.getStackFrames(e));
     }
 

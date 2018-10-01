@@ -2,6 +2,8 @@ package com.beelego.entity.primary.note;
 
 import com.beelego.entity.primary.base.UuidTimeDetailEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import javaslang.collection.Tree;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -40,11 +42,20 @@ public class GitRepo extends UuidTimeDetailEntity {
 //    @JoinColumn(name = "repo_id")
 //    private List<GitTree> tree = new ArrayList<>();
 
-    //@JsonIgnore
+    // @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "gitRepo",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private Collection<GitTree> tree;
+
+    @Column(name = "tree_size")
+    private long treeSize;
+
+
+    public boolean isInitialed(){
+        return this.treeSize == tree.size();
+    }
 
 }

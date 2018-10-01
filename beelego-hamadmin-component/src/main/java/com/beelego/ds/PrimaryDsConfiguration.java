@@ -59,7 +59,7 @@ public class PrimaryDsConfiguration {
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryPrimary(EntityManagerFactoryBuilder builder) {
         return builder
                 .dataSource(primaryDS)
-                .packages("com.beelego.entity.primary")
+                .packages("com.beelego.entity.primary", "com.beelego.entity.primary.*")
                 .persistenceUnit("primaryPersistenceUnit")
                 .properties(getVendorProperties())
                 .build();

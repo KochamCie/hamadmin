@@ -1,4 +1,4 @@
-package com.beelego.rest.note;
+package com.beelego.rest.github;
 
 import java.io.*;
 
